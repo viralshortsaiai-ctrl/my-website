@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohanstories | Collaborative Writing Platform</title>
+    <title>Mohanstories | Collaborative Writing Software</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        :root {
+            --primary: #4f46e5;
+            --dark: #0f172a;
+            --accent: #7c3aed;
+        }
         
         * {
             margin: 0;
@@ -14,17 +20,17 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.7;
+            color: #1e2937;
             background: #ffffff;
         }
         
         .hero {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 120px 20px 100px;
+            padding: 140px 20px 100px;
             text-align: center;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
             position: relative;
             overflow: hidden;
         }
@@ -32,192 +38,208 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://picsum.photos/id/1015/2000/1200') center/cover;
-            opacity: 0.15;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 60%);
+            animation: rotate 40s linear infinite;
         }
         
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 4.8rem;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
         }
         
         .tagline {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             max-width: 700px;
-            margin: 0 auto 40px;
+            margin: 0 auto 2.5rem;
+            font-weight: 500;
+        }
+        
+        .subtitle {
+            font-size: 1.35rem;
+            max-width: 620px;
+            margin: 0 auto 3rem;
+            opacity: 0.95;
         }
         
         .cta-button {
             background: white;
-            color: #4f46e5;
-            padding: 16px 40px;
-            font-size: 1.2rem;
+            color: var(--dark);
+            padding: 18px 48px;
+            font-size: 1.25rem;
             font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
+            border-radius: 9999px;
             text-decoration: none;
             display: inline-block;
+            margin: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
         
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.15);
         }
         
-        section {
+        .secondary-cta {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.8);
+        }
+        
+        .section {
             padding: 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .intro-text {
+            font-size: 1.35rem;
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 5rem;
+            line-height: 1.8;
         }
         
         .features {
-            background: #f8fafc;
-        }
-        
-        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 40px;
-            margin-top: 60px;
         }
         
         .feature {
             background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 48px 32px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.08);
             text-align: center;
+            transition: transform 0.3s ease;
         }
         
-        .anti-ai {
-            background: linear-gradient(135deg, #1e2937, #334155);
-            color: white;
+        .feature:hover {
+            transform: translateY(-8px);
+        }
+        
+        .feature h3 {
+            font-size: 1.6rem;
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .quote-section {
+            background: #f8fafc;
+            text-align: center;
+            padding: 120px 20px;
+        }
+        
+        .quote {
+            font-size: 1.6rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-style: italic;
+            color: #334155;
+        }
+        
+        .author {
+            margin-top: 2rem;
+            font-weight: 500;
+            color: #64748b;
         }
         
         footer {
-            background: #0f172a;
+            background: var(--dark);
             color: #cbd5e1;
-            padding: 80px 20px 40px;
             text-align: center;
+            padding: 80px 20px 40px;
+            font-size: 0.95rem;
         }
         
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            padding: 15px 0;
-            border-bottom: 1px solid #e2e8f0;
+        .footer-links {
+            margin: 2rem 0;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 3.2rem; }
+            .tagline { font-size: 1.4rem; }
+            .hero { padding: 100px 20px 70px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <h2 style="color: #4f46e5; font-family: 'Playfair Display', serif;">Mohanstories</h2>
-            <div>
-                <a href="#" style="margin: 0 15px; color: #334155; text-decoration: none;">Features</a>
-                <a href="#" style="margin: 0 15px; color: #334155; text-decoration: none;">Blog</a>
-                <a href="#" style="margin: 0 15px; color: #334155; text-decoration: none;">About</a>
-                <a href="https://github.com/viralshortsaiai-ctrl/my-website" target="_blank" style="margin-left: 20px; color: #4f46e5; text-decoration: none;">GitHub</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero -->
     <header class="hero">
-        <div class="container">
-            <h1 style="position: relative;">Write like a human.</h1>
-            <p class="tagline" style="position: relative;">Mohanstories is a collaborative writing platform made for creativity and storytelling.</p>
-            <a href="#" class="cta-button" onclick="alert('Welcome to Mohanstories! 🚀 Join the creative journey.');">Join for free</a>
+        <div style="position: relative; z-index: 2;">
+            <h1>Mohanstories</h1>
+            <p class="tagline">Write like a human.</p>
+            <p class="subtitle">Collaborative writing software made for creativity and passionate storytellers.</p>
+            
+            <a href="https://github.com/viralshortsaiai-ctrl" class="cta-button">Join for Free</a>
+            <a href="#" class="cta-button secondary-cta">Watch Demo</a>
         </div>
     </header>
 
-    <!-- Made for writers -->
-    <section>
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">Made for passionate storytellers</h2>
-            <p style="text-align: center; font-size: 1.3rem; max-width: 700px; margin: 0 auto 60px;">Plenty of tools are made for memos and notes. <strong>That’s not us.</strong></p>
-            
-            <p style="text-align: center; font-size: 1.4rem; max-width: 800px; margin: 0 auto;">Mohanstories is here to help you build worlds, craft unforgettable characters, wrench hearts, and celebrate storytelling in <strong>all its forms.</strong></p>
-        </div>
-    </section>
-
-    <!-- Collaboration -->
-    <section class="features">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem;">One place for drafts, edits, and discussions</h2>
-            <p style="text-align: center; max-width: 700px; margin: 30px auto 60px;">Streamline the way you write, edit, and manage feedback with Mohanstories.</p>
-            
-            <div class="feature-grid">
-                <div class="feature">
-                    <h3>Stay in control with connected drafts</h3>
-                </div>
-                <div class="feature">
-                    <h3>Keep feedback focused with comments</h3>
-                </div>
-                <div class="feature">
-                    <h3>Write, draft, merge, repeat</h3>
-                </div>
+    <section class="section">
+        <h2>Made for passionate writers</h2>
+        <p class="intro-text">
+            Plenty of tools are made for memos, notes, and to-do lists. <strong>That’s not us.</strong><br><br>
+            Mohanstories is here to help you build worlds, wrench hearts, raise eyebrows, and celebrate creativity in all its forms.
+        </p>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>One place for drafts, edits, and discussions</h3>
+                <p>Your bespoke process isn’t polishing that prose any faster. Streamline the way you write, edit, and manage feedback with Mohanstories.</p>
+            </div>
+            <div class="feature">
+                <h3>Stay in control with connected drafts</h3>
+                <p>Keep feedback focused with comments + drafts. Write, draft, merge, repeat.</p>
+            </div>
+            <div class="feature">
+                <h3>A principled alternative — by writers, for writers</h3>
+                <p>Your content is <strong>YOURS</strong>. No generative AI — ever.</p>
             </div>
         </div>
     </section>
 
-    <!-- Principled alternative -->
-    <section class="anti-ai">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem;">A principled alternative — by storytellers, for storytellers</h2>
-            <p style="text-align: center; max-width: 700px; margin: 40px auto; font-size: 1.3rem;">Your stories are <strong>YOURS</strong>.</p>
-            <p style="text-align: center; font-size: 1.4rem;">No generative AI — <strong>ever</strong>.</p>
-            
-            <div style="text-align: center; margin-top: 60px;">
-                <a href="#" class="cta-button" style="background: #4f46e5; color: white;">Join the community</a>
-            </div>
+    <section class="quote-section">
+        <div class="quote">
+            “More than any other single invention, writing has transformed human consciousness.”
         </div>
+        <div class="author">— Walter J. Ong</div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p style="font-size: 1.8rem; margin-bottom: 30px; font-style: italic;">&ldquo;Stories are the most powerful way we have to communicate.&rdquo;</p>
-            <p style="margin-bottom: 40px;">— Inspired by great storytellers</p>
-            
-            <div style="margin: 40px 0;">
-                <a href="#" style="color: #cbd5e1; margin: 0 15px;">Blog</a>
-                <a href="#" style="color: #cbd5e1; margin: 0 15px;">Help</a>
-                <a href="#" style="color: #cbd5e1; margin: 0 15px;">About Us</a>
-            </div>
-            
-            <p>&copy; 2026 Mohanstories. Made with ❤️ for creators.</p>
-            <p><a href="https://github.com/viralshortsaiai-ctrl/my-website" style="color: #64748b;">View source on GitHub</a></p>
+        <p><strong>Mohanstories</strong> — Collaborative Storytelling Platform</p>
+        
+        <div class="footer-links">
+            <a href="#">Blog</a>
+            <a href="#">About</a>
+            <a href="#">Help Center</a>
+            <a href="#">Contact</a>
         </div>
+        
+        <p>&copy; 2026 Mohanstories. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Simple scroll effect for nav
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(255,255,255,0.98)';
-            } else {
-                nav.style.background = 'rgba(255,255,255,0.95)';
-            }
-        });
-    </script>
 </body>
 </html>
